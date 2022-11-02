@@ -7,12 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed = 1f;
 
     private Vector3 _movementInput;
-    private Rigidbody _rb;
+    private CharacterController _charCtrl;
 
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _charCtrl = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -23,6 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _movementInput * _moveSpeed * Time.deltaTime);
+        _charCtrl.Move(_movementInput * _moveSpeed * Time.deltaTime);
     }
 }

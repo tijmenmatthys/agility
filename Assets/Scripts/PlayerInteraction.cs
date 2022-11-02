@@ -13,10 +13,15 @@ public class PlayerInteraction : MonoBehaviour
         _obstacleLayer = LayerMask.NameToLayer("Obstacle");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.TryGetComponent(out Obstacle obstacle))
+    //        _gameManager.OnObstacleHit(obstacle);
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        //if (collision.gameObject.layer == _obstacleLayer)
-        if (collision.gameObject.TryGetComponent(out Obstacle obstacle))
+        if (other.gameObject.TryGetComponent(out Obstacle obstacle))
             _gameManager.OnObstacleHit(obstacle);
     }
 }

@@ -8,11 +8,22 @@ public class Obstacle : MonoBehaviour
     protected Material _startMaterial;
     protected MeshRenderer _meshRenderer;
 
+    protected static GameManager _gameManager;
+    protected static int _playerLayer;
+
     private void Start()
     {
+        _gameManager ??= FindObjectOfType<GameManager>();
+        if (_playerLayer == 0) _playerLayer = LayerMask.NameToLayer("Player");
         _meshRenderer = GetComponent<MeshRenderer>();
         _startMaterial = _meshRenderer.material;
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.layer == _playerLayer)
+    //        _gameManager.OnObstacleHit(this);
+    //}
 
     public virtual void OnHitStartFreeze()
     {
