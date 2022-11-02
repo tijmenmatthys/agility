@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6738837988468783089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5472148192508912056, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_Name
+      value: OuterWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5446920470307444037, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+--- !u!1 &1618429144857368137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5472148192508912056, guid: 91258d0182050834da07a29ea264fa84, type: 3}
+  m_PrefabInstance: {fileID: 6738837988468783089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1493945158586871402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618429144857368137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808a31cfb28d66b4e821af096fbc0557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitMaterial: {fileID: 2100000, guid: e963e7625dae827419844180a7bf6cab, type: 2}
