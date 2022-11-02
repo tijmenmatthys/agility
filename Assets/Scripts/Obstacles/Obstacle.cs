@@ -19,12 +19,6 @@ public class Obstacle : MonoBehaviour
         _startMaterial = _meshRenderer.material;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.layer == _playerLayer)
-    //        _gameManager.OnObstacleHit(this);
-    //}
-
     public virtual void OnHitStartFreeze()
     {
         _meshRenderer.material = _hitMaterial;

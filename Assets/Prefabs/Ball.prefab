@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2935611308109726192, guid: 91258d0182050834da07a29ea264fa84, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: edef5b108cab32d4e9d85d8729fb9b49, type: 2}
+      objectReference: {fileID: 2100000, guid: 23810fd40c779234d92e992bd49a12ab, type: 2}
     - target: {fileID: 4511412800766651275, guid: 91258d0182050834da07a29ea264fa84, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8940300803483653549, guid: 91258d0182050834da07a29ea264fa84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -112,4 +112,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c337dc0884e3e4046aa115b086ba9708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 15
+  _moveSpeed: 10

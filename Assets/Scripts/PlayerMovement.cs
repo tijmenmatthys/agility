@@ -6,11 +6,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 1f;
 
-    private Vector3 _movementInput;
+    private Vector3 _movementInput = Vector3.zero;
     private CharacterController _charCtrl;
+    private bool _lockMovement = true;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _charCtrl = GetComponent<CharacterController>();
     }
@@ -18,7 +18,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _movementInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 currentInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        if (!_lockMovement) _movementInput = currentInput;
+        else if (currentInput == Vector3.zero) _lockMovement = false;
     }
 
     private void FixedUpdate()
