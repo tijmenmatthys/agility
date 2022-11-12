@@ -143,20 +143,24 @@ public class LevelGenerator : MonoBehaviour
 
     private bool IsNotObstructed(float xSize, bool checkCircle, float xPosition, float zPosition, Quaternion rotation)
     {
+        bool isFree;
         if (checkCircle)
         {
-            return !Physics.SphereCast(new Vector3(xPosition, 20, zPosition),
+            isFree = !Physics.SphereCast(new Vector3(xPosition, 20, zPosition),
                 xSize / 2, Vector3.down, out RaycastHit hit, 20, _spawnLayer);
         }
         else
         {
-            //Debug.DrawLine(new Vector3(xPosition, 2, zPosition), new Vector3(xPosition, 2, zPosition) + Vector3.down * 2, Color.magenta, 999);
-            bool isFree = !Physics.BoxCast(new Vector3(xPosition, 2, zPosition),
+            isFree = !Physics.BoxCast(new Vector3(xPosition, 2, zPosition),
                 new Vector3(xSize / 2, .5f, .5f), Vector3.down, out RaycastHit hitInfo, rotation,
                 2, _spawnLayer);
             //if (!isFree) Debug.DrawRay(hitInfo.point, hitInfo.normal*.5f, Color.red, 999);
-            return isFree;
         }
+
+        Color debugColor = isFree ? Color.green : Color.red;
+        Debug.DrawLine(new Vector3(xPosition, 2, zPosition), new Vector3(xPosition, 2, zPosition) + Vector3.down * 2, debugColor, 999);
+
+        return isFree;
     }
 
     private void SpawnFinish()

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     private UIManager _uiManager;
     private LevelGenerator _levelGenerator;
     private ColorGrading _colorGrading;
+    private AudioManager _audioManager;
 
     private int Health
     {
@@ -47,11 +49,13 @@ public class GameManager : MonoBehaviour
     {
         _uiManager = GetComponent<UIManager>();
         _levelGenerator = GetComponent<LevelGenerator>();
+        _audioManager = FindObjectOfType<AudioManager>();
     }
     private void Start()
     {
         Health = _startHealth;
         Level = 0;
+        _audioManager.PlayEasy();
         _postProcessVolume.profile.TryGetSettings(out _colorGrading);
     }
 
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             _levelGenerator.Generate(Level);
             _generateNextLevel = false;
+            SetMusic();
             SetNewGlobalColor();
             BeginFreeze();
         }
@@ -93,6 +98,7 @@ public class GameManager : MonoBehaviour
         {
             _hitObstacle = obstacle;
             _hitObstacle.OnHitStartFreeze();
+            _audioManager.PlaySound("Hit");
             BeginFreeze();
         }
     }
@@ -110,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         Destroy(pickup);
         Health++;
+        _audioManager.PlaySound("Pickup");
     }
 
     public void OnLevelComplete()
@@ -117,11 +124,15 @@ public class GameManager : MonoBehaviour
         Level++;
         Debug.Log($"Survived {Level} levels!");
         _generateNextLevel = true;
+        _audioManager.PlaySound("NextLevel");
     }
 
     private void EndGame()
     {
-        Debug.Log("Game Over!");
+        _audioManager.PlaySound("Die");
+        _audioManager.PlayMenu();
+        GlobalPlayerData.LastScore = Level;
+        SceneManager.LoadScene("Menu");
     }
 
     private void SetNewGlobalColor()
@@ -129,5 +140,12 @@ public class GameManager : MonoBehaviour
         // use a prime number to cycle over the color space,
         // giving a deterministic unique color to every level
         _colorGrading.hueShift.value = 83 * Level;
+    }
+
+    private void SetMusic()
+    {
+        if (Level < 5) _audioManager.PlayEasy();
+        else if (Level < 10) _audioManager.PlayMedium();
+        else _audioManager.PlayHard();
     }
 }
